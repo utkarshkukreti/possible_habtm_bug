@@ -5,3 +5,21 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+dilbert = User.create :name => "Dilbert"
+dogbert = User.create :name => "Dogbert"
+
+# dilbert creates a discussion
+discussion = Discussion.create :user => dilbert, :title => "Hello from Dilbert"
+# dogbert subscribed to this
+discussion.subscribed_users << dogbert
+discussion.save
+
+puts "Original Discussion"
+p discussion
+
+puts "Discussion's subscribed users"
+p discussion.subscribed_users
+
+puts "Dogbert's subscribed discussions"
+p dogbert.subscribed_discussions
